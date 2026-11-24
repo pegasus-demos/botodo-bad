@@ -2,6 +2,10 @@
 
 The agent-first todo list.
 
+Botodo is a small demo app: sign up, create lists, and add todos with optional notes and due dates.
+The signed-in home page is a dashboard showing what's open, due soon and overdue across all of your lists.
+The code for it lives in `apps/todos` and `templates/todos`.
+
 ## Quickstart
 
 ### Prerequisites
