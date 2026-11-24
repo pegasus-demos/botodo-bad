@@ -6,56 +6,52 @@
         {% translate "See where everything stands" %}
       </h2>
       <p class="mt-4 max-w-xl text-lg text-pretty text-base-content/70">
-        {% translate "One dashboard shows what's done, what's next, and what's stuck, so you spend less time asking for updates." %}
+        {% translate "Your dashboard adds up every list, so one look tells you what's open, what's due, and what's done." %}
       </p>
       <div class="mt-10 space-y-8">
-        {% include "web/components/feature_item.html" with icon="fa-solid fa-chart-column" title=_("Reports that build themselves") description=_("Progress charts update as you work. No spreadsheets to maintain.") %}
-        {% include "web/components/feature_item.html" with icon="fa-solid fa-filter" title=_("Find anything fast") description=_("Filter by status or date to get to the work you care about.") %}
-        {% include "web/components/feature_item.html" with icon="fa-solid fa-eye" title=_("Clear at a glance") description=_("The important numbers up front, with details a click away.") %}
+        {% include "web/components/feature_item.html" with icon="fa-solid fa-gauge" title=_("The numbers up front") description=_("Open, due today, overdue and completed, counted across all of your lists.") %}
+        {% include "web/components/feature_item.html" with icon="fa-solid fa-bars-progress" title=_("Progress for every list") description=_("Each list shows how far along it is, and how much is left.") %}
+        {% include "web/components/feature_item.html" with icon="fa-solid fa-circle-check" title=_("Done stays out of the way") description=_("Completed todos tuck themselves away, and come back with one click if you need them.") %}
       </div>
     </div>
-    {% comment %}A theme-colored sketch of a progress report. Swap in a screenshot of your own product.{% endcomment %}
+    {% comment %}A sketch of the dashboard's counts and list progress. Swap in a screenshot if you prefer.{% endcomment %}
     <div aria-hidden="true">
       <div class="mx-auto max-w-md rounded-box border border-base-content/10 bg-base-100 p-6 shadow-lg">
-        <div class="flex items-center justify-between">
-          <div class="h-3 w-28 rounded-full bg-base-content/40"></div>
-          <div class="h-2.5 w-16 rounded-full bg-base-content/10"></div>
-        </div>
-        <div class="mt-8 space-y-6">
+        <div class="grid grid-cols-3 gap-3 border-b border-base-content/10 pb-6">
           <div>
-            <div class="flex items-center gap-2">
-              <span class="size-2.5 rounded-full bg-success"></span>
-              <div class="h-2.5 w-20 rounded-full bg-base-content/10"></div>
-            </div>
-            <progress class="progress progress-success mt-3" value="72" max="100"></progress>
+            <div class="text-xs text-base-content/60">{% translate "Open" %}</div>
+            <div class="text-3xl font-extrabold">12</div>
           </div>
           <div>
-            <div class="flex items-center gap-2">
-              <span class="size-2.5 rounded-full bg-primary"></span>
-              <div class="h-2.5 w-24 rounded-full bg-base-content/10"></div>
-            </div>
-            <progress class="progress progress-primary mt-3" value="45" max="100"></progress>
+            <div class="text-xs text-base-content/60">{% translate "Due today" %}</div>
+            <div class="text-3xl font-extrabold text-warning">3</div>
           </div>
           <div>
-            <div class="flex items-center gap-2">
-              <span class="size-2.5 rounded-full bg-warning"></span>
-              <div class="h-2.5 w-16 rounded-full bg-base-content/10"></div>
-            </div>
-            <progress class="progress progress-warning mt-3" value="18" max="100"></progress>
+            <div class="text-xs text-base-content/60">{% translate "Completed" %}</div>
+            <div class="text-3xl font-extrabold text-success">27</div>
           </div>
         </div>
-        <div class="mt-8 grid grid-cols-3 gap-3 border-t border-base-content/10 pt-6">
+        <div class="mt-6 space-y-5">
           <div>
-            <div class="h-5 w-10 rounded-full bg-base-content/40"></div>
-            <div class="mt-2 h-2 w-14 rounded-full bg-base-content/10"></div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="font-medium">{% translate "Launch plan" %}</span>
+              <span class="text-base-content/60">{% translate "3 todos left" %}</span>
+            </div>
+            <progress class="progress progress-primary mt-2" value="40" max="100"></progress>
           </div>
           <div>
-            <div class="h-5 w-8 rounded-full bg-base-content/40"></div>
-            <div class="mt-2 h-2 w-12 rounded-full bg-base-content/10"></div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="font-medium">{% translate "Groceries" %}</span>
+              <span class="text-base-content/60">{% translate "2 todos left" %}</span>
+            </div>
+            <progress class="progress progress-primary mt-2" value="75" max="100"></progress>
           </div>
           <div>
-            <div class="h-5 w-6 rounded-full bg-warning"></div>
-            <div class="mt-2 h-2 w-10 rounded-full bg-base-content/10"></div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="font-medium">{% translate "Home" %}</span>
+              <span class="text-base-content/60">{% translate "All done!" %}</span>
+            </div>
+            <progress class="progress progress-success mt-2" value="100" max="100"></progress>
           </div>
         </div>
       </div>

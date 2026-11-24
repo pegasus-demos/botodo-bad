@@ -1,0 +1,17 @@
+{% comment %}
+  A todo's due date, highlighted when it is due today or overdue.
+  Usage: {% include "todos/components/due_badge.html" %} with a `todo` in the context.
+{% endcomment %}
+{% load i18n %}
+{% if todo.due_date %}
+  <span class="badge badge-sm badge-soft whitespace-nowrap {% if todo.is_overdue %}badge-error{% elif todo.is_due_today %}badge-warning{% endif %}">
+    <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+    {% if todo.is_due_today %}
+      {% translate "Today" %}
+    {% elif todo.is_overdue %}
+      {% blocktranslate trimmed with date=todo.due_date|date:"M j" %}Overdue · {{ date }}{% endblocktranslate %}
+    {% else %}
+      {{ todo.due_date|date:"M j" }}
+    {% endif %}
+  </span>
+{% endif %}

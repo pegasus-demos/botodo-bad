@@ -1,0 +1,17 @@
+{% load i18n %}
+<li class="py-3">
+  <form class="space-y-2" hx-post="{% url 'todos:todo_edit' todo_list.pk todo.pk %}">
+    {{ edit_form.title }}
+    {{ edit_form.title.errors }}
+    {{ edit_form.notes }}
+    {{ edit_form.notes.errors }}
+    <div class="flex flex-wrap items-center gap-2">
+      <div class="w-44">{{ edit_form.due_date }}</div>
+      <button class="btn btn-primary btn-sm" type="submit">{% translate "Save" %}</button>
+      <button class="btn btn-ghost btn-sm" type="button" hx-get="{% url 'todos:todo_panel' todo_list.pk %}">
+        {% translate "Cancel" %}
+      </button>
+    </div>
+    {{ edit_form.due_date.errors }}
+  </form>
+</li>

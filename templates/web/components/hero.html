@@ -2,14 +2,15 @@
 <section>
   <div class="mx-auto max-w-7xl px-6 pt-16 sm:pt-20 lg:px-8">
     <div class="max-w-3xl">
-      <h1 class="text-4xl font-extrabold tracking-tight text-balance text-base-content sm:text-5xl lg:text-6xl">
-        {{ project_meta.NAME }}
+      <p class="font-semibold text-primary">{{ project_meta.NAME }}</p>
+      <h1 class="mt-2 text-4xl font-extrabold tracking-tight text-balance text-base-content sm:text-5xl lg:text-6xl">
+        {{ project_meta.DESCRIPTION }}
       </h1>
       <p class="mt-4 max-w-2xl text-lg text-pretty text-base-content/80 sm:text-xl">
-        {{ project_meta.DESCRIPTION }}
+        {% translate "Keep everything you need to do in simple lists, give the important things a due date, and always know what's next." %}
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a href="{% url 'account_signup' %}" class="btn btn-lg btn-primary">{% translate "Create an account" %}</a>
+        <a href="{% url 'account_signup' %}" class="btn btn-lg btn-primary">{% translate "Get started" %}</a>
         <a href="{% url 'account_login' %}" class="btn btn-lg btn-ghost">{% translate "Sign in" %}</a>
       </div>
     </div>

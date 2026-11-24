@@ -1,0 +1,16 @@
+{% comment %}
+  A one-line form for creating a todo list.
+  Usage: {% include "todos/components/list_create_form.html" %} with a `TodoListForm` as `form` in the context.
+{% endcomment %}
+{% load i18n %}
+<form method="post" action="{% url 'todos:list_index' %}">
+  {% csrf_token %}
+  <div class="join w-full">
+    {{ form.name }}
+    <button class="btn btn-primary join-item" type="submit">
+      <i class="fa-solid fa-plus" aria-hidden="true"></i>
+      {% translate "Create list" %}
+    </button>
+  </div>
+  {{ form.name.errors }}
+</form>

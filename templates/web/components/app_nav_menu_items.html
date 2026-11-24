@@ -9,6 +9,14 @@
   </a>
 </li>
 {% if not user.is_anonymous %}
+<li>
+  <a href="{% url 'todos:list_index' %}" {% if active_tab == 'lists' %}class="menu-active"{% endif %}>
+    <i class="fa-solid fa-list-check h-4 w-4"></i>
+    {% translate "My Lists" %}
+  </a>
+</li>
+{% endif %}
+{% if not user.is_anonymous %}
 <li class="menu-title">
   <span>{% translate "My Account" %}</span>
 </li>

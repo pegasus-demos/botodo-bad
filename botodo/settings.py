@@ -70,6 +70,7 @@ THIRD_PARTY_APPS = [
 PROJECT_APPS = [
     "apps.users.apps.UserConfig",
     "apps.web",
+    "apps.todos.apps.TodosConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -371,7 +372,7 @@ PROJECT_METADATA = {
     "URL": "http://localhost:8000",
     "DESCRIPTION": gettext_lazy("The agent-first todo list."),
     "IMAGE": "https://upload.wikimedia.org/wikipedia/commons/2/20/PEO-pegasus_black.svg",
-    "KEYWORDS": "SaaS, django",
+    "KEYWORDS": "todo list, tasks, productivity",
     "CONTACT_EMAIL": "localmcp@coryzue.com",
 }
 

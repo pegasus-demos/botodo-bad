@@ -1,0 +1,70 @@
+{% extends "web/app/app_base.html" %}
+{% load i18n %}
+{% block app %}
+<section class="app-card">
+  <h1 class="text-3xl font-bold">
+    {% if user.first_name %}
+      {% blocktranslate trimmed with name=user.first_name %}Hi, {{ name }}!{% endblocktranslate %}
+    {% else %}
+      {% translate "Hi there!" %}
+    {% endif %}
+  </h1>
+  <p class="mt-1 text-base-content/70">{% translate "Here's where things stand." %}</p>
+  {% if not todo_lists %}
+    <div class="mt-8 max-w-md">
+      <h2 class="text-xl font-semibold">{% translate "Create your first list" %}</h2>
+      <p class="mt-1 mb-4 text-base-content/70">
+        {% translate "Todos live in lists. Give your first one a name to get started." %}
+      </p>
+      {% include "todos/components/list_create_form.html" %}
+    </div>
+  {% else %}
+    <div class="stats stats-vertical mt-6 w-full border border-base-content/10 sm:stats-horizontal">
+      <div class="stat">
+        <div class="stat-title">{% translate "Open" %}</div>
+        <div class="stat-value">{{ open_count }}</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">{% translate "Due today" %}</div>
+        <div class="stat-value {% if due_today_count %}text-warning{% endif %}">{{ due_today_count }}</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">{% translate "Overdue" %}</div>
+        <div class="stat-value {% if overdue_count %}text-error{% endif %}">{{ overdue_count }}</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">{% translate "Completed" %}</div>
+        <div class="stat-value {% if completed_count %}text-success{% endif %}">{{ completed_count }}</div>
+      </div>
+    </div>
+
+    <h2 class="mt-10 text-xl font-semibold">{% translate "Due soon" %}</h2>
+    {% if due_soon_todos %}
+      <ul class="mt-2 divide-y divide-base-content/10">
+        {% for todo in due_soon_todos %}
+          <li>
+            <a class="-mx-2 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-field px-2 py-3 hover:bg-base-200"
+               href="{% url 'todos:list_detail' todo.todo_list_id %}">
+              <span class="min-w-0 break-words">{{ todo.title }}</span>
+              {% include "todos/components/due_badge.html" %}
+              <span class="ms-auto text-sm text-base-content/60">{{ todo.todo_list.name }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="mt-2 text-base-content/70">{% translate "Nothing due in the next week. Nice." %}</p>
+    {% endif %}
+
+    <div class="mt-10 flex items-center justify-between">
+      <h2 class="text-xl font-semibold">{% translate "Your lists" %}</h2>
+      <a class="link link-primary link-hover text-sm" href="{% url 'todos:list_index' %}">{% translate "Manage lists" %}</a>
+    </div>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      {% for todo_list in todo_lists %}
+        {% include "todos/components/list_card.html" %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

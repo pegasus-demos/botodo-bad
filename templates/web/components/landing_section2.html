@@ -3,74 +3,41 @@
   <div class="mx-auto grid max-w-7xl gap-12 px-6 py-16 sm:py-24 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8">
     <div>
       <h2 class="text-3xl font-bold tracking-tight text-balance text-base-content sm:text-4xl">
-        {% translate "Grows with you" %}
+        {% translate "Know what's due before it's late" %}
       </h2>
       <p class="mt-4 max-w-xl text-lg text-pretty text-base-content/70">
-        {% translate "Start small and add more when you need it. No big setup required." %}
+        {% translate "Add a due date when it matters, skip it when it doesn't. Botodo puts whatever is coming up next at the top." %}
       </p>
       <div class="mt-10 space-y-8">
-        {% include "web/components/feature_item.html" with icon="fa-solid fa-seedling" title=_("Start simple") description=_("Up and running in a few minutes, no manual required.") %}
-        {% include "web/components/feature_item.html" with icon="fa-solid fa-sliders" title=_("Add more when you're ready") description=_("Turn things on as you need them, and not a moment before.") %}
-        {% include "web/components/feature_item.html" with icon="fa-solid fa-mobile-screen" title=_("Use it anywhere") description=_("Works on your phone, tablet, or laptop.") %}
+        {% include "web/components/feature_item.html" with icon="fa-solid fa-plus" title=_("Capture in one line") description=_("Type what needs doing, pick a date if you want one, and hit enter.") %}
+        {% include "web/components/feature_item.html" with icon="fa-solid fa-clock" title=_("A week's notice") description=_("Everything due in the next seven days shows up on your dashboard, whichever list it's in.") %}
+        {% include "web/components/feature_item.html" with icon="fa-solid fa-note-sticky" title=_("Room for the details") description=_("Add notes to any todo for the links, numbers and reminders you'll want later.") %}
       </div>
     </div>
-    {% comment %}A theme-colored sketch of a settings page with features switched on and off. Swap in a screenshot of your own product.{% endcomment %}
+    {% comment %}A sketch of the dashboard's "Due soon" list. Swap in a screenshot if you prefer.{% endcomment %}
     <div class="lg:order-first" aria-hidden="true">
       <div class="mx-auto max-w-md rounded-box border border-base-content/10 bg-base-100 shadow-lg">
-        <div class="flex items-center justify-between p-6">
-          <div class="h-3 w-24 rounded-full bg-base-content/40"></div>
-          <span class="badge badge-soft badge-primary">2 / 5</span>
-        </div>
-        <ul class="divide-y divide-base-content/10 border-t border-base-content/10">
-          <li class="flex items-center gap-4 px-6 py-4">
-            <div class="flex size-9 shrink-0 items-center justify-center rounded-field bg-primary/10 text-primary">
-              <i class="fa-solid fa-bolt text-sm"></i>
-            </div>
-            <div class="flex-1 space-y-2">
-              <div class="h-2.5 w-24 rounded-full bg-base-content/40"></div>
-              <div class="h-2 w-32 rounded-full bg-base-content/10"></div>
-            </div>
-            <input type="checkbox" class="toggle toggle-primary pointer-events-none" tabindex="-1" checked>
+        <div class="p-6 pb-4 font-semibold">{% translate "Due soon" %}</div>
+        <ul class="divide-y divide-base-content/10 border-t border-base-content/10 text-sm">
+          <li class="flex items-center gap-3 px-6 py-4">
+            <span class="flex-1">{% translate "Renew passport" %}</span>
+            <span class="badge badge-sm badge-soft badge-error">{% translate "Overdue · Nov 20" %}</span>
           </li>
-          <li class="flex items-center gap-4 px-6 py-4">
-            <div class="flex size-9 shrink-0 items-center justify-center rounded-field bg-primary/10 text-primary">
-              <i class="fa-solid fa-chart-line text-sm"></i>
-            </div>
-            <div class="flex-1 space-y-2">
-              <div class="h-2.5 w-20 rounded-full bg-base-content/40"></div>
-              <div class="h-2 w-32 rounded-full bg-base-content/10"></div>
-            </div>
-            <input type="checkbox" class="toggle toggle-primary pointer-events-none" tabindex="-1" checked>
+          <li class="flex items-center gap-3 px-6 py-4">
+            <span class="flex-1">{% translate "Write the announcement post" %}</span>
+            <span class="badge badge-sm badge-soft badge-warning">{% translate "Today" %}</span>
           </li>
-          <li class="flex items-center gap-4 px-6 py-4">
-            <div class="flex size-9 shrink-0 items-center justify-center rounded-field bg-base-content/5 text-base-content/40">
-              <i class="fa-solid fa-bell text-sm"></i>
-            </div>
-            <div class="flex-1 space-y-2">
-              <div class="h-2.5 w-28 rounded-full bg-base-content/20"></div>
-              <div class="h-2 w-32 rounded-full bg-base-content/10"></div>
-            </div>
-            <input type="checkbox" class="toggle pointer-events-none" tabindex="-1">
+          <li class="flex items-center gap-3 px-6 py-4">
+            <span class="flex-1">{% translate "Pick up dry cleaning" %}</span>
+            <span class="badge badge-sm badge-soft">{% translate "Nov 26" %}</span>
           </li>
-          <li class="flex items-center gap-4 px-6 py-4">
-            <div class="flex size-9 shrink-0 items-center justify-center rounded-field bg-base-content/5 text-base-content/40">
-              <i class="fa-solid fa-plug text-sm"></i>
-            </div>
-            <div class="flex-1 space-y-2">
-              <div class="h-2.5 w-16 rounded-full bg-base-content/20"></div>
-              <div class="h-2 w-32 rounded-full bg-base-content/10"></div>
-            </div>
-            <input type="checkbox" class="toggle pointer-events-none" tabindex="-1">
+          <li class="flex items-center gap-3 px-6 py-4">
+            <span class="flex-1">{% translate "Book the demo call" %}</span>
+            <span class="badge badge-sm badge-soft">{% translate "Nov 28" %}</span>
           </li>
-          <li class="flex items-center gap-4 px-6 py-4">
-            <div class="flex size-9 shrink-0 items-center justify-center rounded-field bg-base-content/5 text-base-content/40">
-              <i class="fa-solid fa-palette text-sm"></i>
-            </div>
-            <div class="flex-1 space-y-2">
-              <div class="h-2.5 w-24 rounded-full bg-base-content/20"></div>
-              <div class="h-2 w-32 rounded-full bg-base-content/10"></div>
-            </div>
-            <input type="checkbox" class="toggle pointer-events-none" tabindex="-1">
+          <li class="flex items-center gap-3 px-6 py-4">
+            <span class="flex-1">{% translate "Buy a birthday present" %}</span>
+            <span class="badge badge-sm badge-soft">{% translate "Nov 30" %}</span>
           </li>
         </ul>
       </div>
