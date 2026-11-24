@@ -10,11 +10,11 @@
   <div class="mt-2 flex items-start justify-between gap-4">
     <h1 class="min-w-0 text-3xl font-bold break-words">{{ todo_list.name }}</h1>
     <div class="flex shrink-0 gap-1">
-      <a class="btn btn-ghost btn-sm" href="{% url 'todos:list_edit' todo_list.pk %}">
+      <a class="btn btn-ghost btn-sm" href="{% url 'todos:list_edit' todo_list.pk %}" aria-label="{% translate "Rename" %}">
         <i class="fa-solid fa-pen" aria-hidden="true"></i>
         <span class="hidden sm:inline">{% translate "Rename" %}</span>
       </a>
-      <button class="btn btn-ghost btn-sm text-error" type="button" @click="$refs.deleteDialog.showModal()">
+      <button class="btn btn-ghost btn-sm text-error" type="button" @click="$refs.deleteDialog.showModal()" aria-label="{% translate "Delete" %}">
         <i class="fa-solid fa-trash" aria-hidden="true"></i>
         <span class="hidden sm:inline">{% translate "Delete" %}</span>
       </button>
