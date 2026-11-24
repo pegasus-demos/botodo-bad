@@ -1,0 +1,64 @@
+{
+  "_csrf-nfhvYuDJ.js": {
+    "file": "js/csrf-nfhvYuDJ.js",
+    "name": "csrf"
+  },
+  "assets/javascript/app.js": {
+    "file": "js/app-bundle.js",
+    "name": "app",
+    "src": "assets/javascript/app.js",
+    "isEntry": true,
+    "imports": [
+      "_csrf-nfhvYuDJ.js"
+    ]
+  },
+  "assets/javascript/site.js": {
+    "file": "js/site-bundle.js",
+    "name": "site",
+    "src": "assets/javascript/site.js",
+    "isEntry": true,
+    "imports": [
+      "_csrf-nfhvYuDJ.js"
+    ]
+  },
+  "assets/styles/site-base.css": {
+    "file": "css/site-base-css.css",
+    "name": "site-base-css",
+    "names": [
+      "site-base-css.css"
+    ],
+    "src": "assets/styles/site-base.css",
+    "isEntry": true,
+    "assets": [
+      "assets/fa-brands-400-Bs6tcqqs.woff2",
+      "assets/fa-regular-400-DRN8N0d1.woff2",
+      "assets/fa-solid-900-IAB4Droh.woff2",
+      "assets/fa-v4compatibility-CErXDOsT.woff2"
+    ]
+  },
+  "assets/styles/site-tailwind.css": {
+    "file": "css/site-tailwind-css.css",
+    "name": "site-tailwind-css",
+    "names": [
+      "site-tailwind-css.css"
+    ],
+    "src": "assets/styles/site-tailwind.css",
+    "isEntry": true
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-Bs6tcqqs.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-DRN8N0d1.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-IAB4Droh.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2": {
+    "file": "assets/fa-v4compatibility-CErXDOsT.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2"
+  }
+}
