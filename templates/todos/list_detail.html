@@ -1,0 +1,47 @@
+{% extends "web/app/app_base.html" %}
+{% load i18n %}
+{% block app %}
+{% comment %}`showCompleted` lives outside the todo panel so it survives the panel being re-rendered by HTMX.{% endcomment %}
+<section class="app-card" x-data="{ showCompleted: false }">
+  <a class="link link-hover text-sm text-base-content/70" href="{% url 'todos:list_index' %}">
+    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+    {% translate "All lists" %}
+  </a>
+  <div class="mt-2 flex items-start justify-between gap-4">
+    <h1 class="min-w-0 text-3xl font-bold break-words">{{ todo_list.name }}</h1>
+    <div class="flex shrink-0 gap-1">
+      <a class="btn btn-ghost btn-sm" href="{% url 'todos:list_edit' todo_list.pk %}">
+        <i class="fa-solid fa-pen" aria-hidden="true"></i>
+        <span class="hidden sm:inline">{% translate "Rename" %}</span>
+      </a>
+      <button class="btn btn-ghost btn-sm text-error" type="button" @click="$refs.deleteDialog.showModal()">
+        <i class="fa-solid fa-trash" aria-hidden="true"></i>
+        <span class="hidden sm:inline">{% translate "Delete" %}</span>
+      </button>
+    </div>
+  </div>
+  {% include "todos/components/todo_panel.html" %}
+  <dialog class="modal" x-ref="deleteDialog">
+    <div class="modal-box">
+      <h2 class="text-lg font-bold">{% translate "Delete this list?" %}</h2>
+      <p class="py-4">
+        {% blocktranslate trimmed with name=todo_list.name %}
+          “{{ name }}” and all of its todos will be permanently deleted.
+        {% endblocktranslate %}
+      </p>
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn btn-ghost">{% translate "Cancel" %}</button>
+        </form>
+        <form method="post" action="{% url 'todos:list_delete' todo_list.pk %}">
+          {% csrf_token %}
+          <button class="btn btn-error" type="submit">{% translate "Delete list" %}</button>
+        </form>
+      </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>{% translate "Close" %}</button>
+    </form>
+  </dialog>
+</section>
+{% endblock %}

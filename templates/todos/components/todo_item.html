@@ -1,0 +1,26 @@
+{% load i18n %}
+<li class="group flex items-start gap-3 py-3">
+  <input class="checkbox checkbox-primary mt-0.5" type="checkbox" {% if todo.is_complete %}checked{% endif %}
+         hx-post="{% url 'todos:todo_toggle' todo_list.pk todo.pk %}"
+         aria-label="{% if todo.is_complete %}{% translate "Mark as not done" %}{% else %}{% translate "Mark as done" %}{% endif %}">
+  <div class="min-w-0 flex-1">
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+      <span class="break-words {% if todo.is_complete %}text-base-content/50 line-through{% endif %}">{{ todo.title }}</span>
+      {% include "todos/components/due_badge.html" %}
+    </div>
+    {% if todo.notes %}
+      <p class="mt-1 text-sm whitespace-pre-line text-base-content/70">{{ todo.notes }}</p>
+    {% endif %}
+  </div>
+  <div class="flex shrink-0 gap-1 lg:opacity-0 lg:transition-opacity lg:group-focus-within:opacity-100 lg:group-hover:opacity-100">
+    <button class="btn btn-ghost btn-xs btn-square" type="button"
+            hx-get="{% url 'todos:todo_edit' todo_list.pk todo.pk %}" aria-label="{% translate "Edit" %}">
+      <i class="fa-solid fa-pen" aria-hidden="true"></i>
+    </button>
+    <button class="btn btn-ghost btn-xs btn-square text-error" type="button"
+            hx-post="{% url 'todos:todo_delete' todo_list.pk todo.pk %}"
+            hx-confirm="{% translate "Delete this todo?" %}" aria-label="{% translate "Delete" %}">
+      <i class="fa-solid fa-trash" aria-hidden="true"></i>
+    </button>
+  </div>
+</li>

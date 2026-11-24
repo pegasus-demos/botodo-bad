@@ -1,0 +1,25 @@
+{% comment %}
+  A card linking to a todo list, with its progress.
+  Usage: {% include "todos/components/list_card.html" %} with a `todo_list` from `TodoList.objects.with_counts()`.
+{% endcomment %}
+{% load i18n %}
+<a href="{% url 'todos:list_detail' todo_list.pk %}"
+   class="card card-border bg-base-100 transition hover:border-primary hover:shadow-md">
+  <div class="card-body">
+    <h2 class="card-title truncate">{{ todo_list.name }}</h2>
+    <progress class="progress progress-primary" value="{{ todo_list.completed_count }}" max="{{ todo_list.todo_count|default:1 }}"></progress>
+    <p class="text-sm text-base-content/70">
+      {% if not todo_list.todo_count %}
+        {% translate "Nothing here yet" %}
+      {% elif not todo_list.open_count %}
+        {% translate "All done!" %}
+      {% else %}
+        {% blocktranslate trimmed count counter=todo_list.open_count %}
+          {{ counter }} todo left
+        {% plural %}
+          {{ counter }} todos left
+        {% endblocktranslate %}
+      {% endif %}
+    </p>
+  </div>
+</a>

@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import date, timedelta
 
 from django.test import TestCase
 from django.utils import timezone
@@ -8,6 +8,10 @@ from apps.users.models import CustomUser
 
 
 class TodoModelTest(TestCase):
+    user: CustomUser
+    todo_list: TodoList
+    today: date
+
     @classmethod
     def setUpTestData(cls):
         cls.user = CustomUser.objects.create_user(username="todos@example.com")

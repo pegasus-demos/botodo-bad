@@ -1,0 +1,16 @@
+{% extends "web/app/app_base.html" %}
+{% load i18n %}
+{% load form_tags %}
+{% block app %}
+<section class="app-card">
+  <h1 class="text-3xl font-bold">{% translate "Rename list" %}</h1>
+  <form method="post" class="mt-4 max-w-md">
+    {% csrf_token %}
+    {% render_form_fields form %}
+    <div class="mt-4 flex gap-2">
+      <button class="btn btn-primary" type="submit">{% translate "Save" %}</button>
+      <a class="btn btn-ghost" href="{% url 'todos:list_detail' todo_list.pk %}">{% translate "Cancel" %}</a>
+    </div>
+  </form>
+</section>
+{% endblock %}
